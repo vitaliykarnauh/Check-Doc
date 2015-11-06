@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+<h2>
+    Registration
+</h2>
+
+<form name="registration" action="registration" method="post" accept-charset="utf-8">
+    <table>
+        <tr>
+            <td>
+                <label id="userNameLabel" for="userName"> Name </label>
+            </td>
+            <td>
+                <input type="text" size="32" name="userName" id="userName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="emailLabel" for="email"> E-mail </label>
+            </td>
+            <td>
+                <input type="email" id="email" name="email" size="32"
+                       value=""/>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align:left">
+        <button id="input_26" type="submit">
+            Register
+        </button>
+    </div>
+
+</form>
+
+</body>
+</html>
