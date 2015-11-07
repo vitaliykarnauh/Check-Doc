@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CheckDoc</title>
+		<meta charset='utf-8'>
+		<script src="scripts/jquery-2.1.4.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header class='navbar navbar-default navbar-fixed-top'>
+			<div class="container header-container">
+				<a class='navbar-brand'><span class='mt'>CheckDoc</span></a>
+				<ul class="nav navbar-nav navbar-right">
+					<li class='dropdown pull-right'>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='login-span'>Вход</span> <span class="caret"></span></a>
+						<form action="" method="get" class="dropdown-menu collapse dropdown-collapse signin-form" aria-labelledby="dropdownMenu1">
+							<div class="login-box well">
+								<legend>Авторизация</legend>
+								<div class="form-group">
+									<label for="username-email">E-mail</label>
+									<input value='' id="username-email" placeholder="Введите e-mail" type="email" class="form-control" required />
+								</div>
+								<div class="form-group">
+									<label for="password">Пароль</label>
+									<input id="password" value='' placeholder="Введите пароль" type="password" class="form-control" required />
+								</div>
+								<div class="input-group">
+									<div class="checkbox">
+										<label>
+											<input id="login-remember" type="checkbox" name="remember" value="1"> Запомнить меня
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary btn-login-submit btn-block m-t-md" value="Войти" />
+								</div>
+								<span class='text-center'><a href="/resetting/request" class="text-sm">Забыли пароль?</a></span>
+								<div class="form-group">
+									<br>
+									<a href="/register/" class="btn btn-default btn-block m-t-md">Создать аккаунт</a>
+								</div>
+								
+							</div>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="greeting container">
+			<h1>Соответствие ГОСТам</h1>
+			<h3>Проверка документа на ошибки, ГОСТы или указанные параметры</h3>
+			<br><br>
+		</div>
+		<div class="upload-area container">
+			<div class="row">
+				<div class="col-md-8 col-xs-12">
+					<div class="panel panel-default">
+					<div class="panel-heading"><strong>Загрузка файла</strong> <small> </small></div>
+					<div class="panel-body">
+					<div class="input-group image-preview">
+						<input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+						<!-- don't give a name === doesn't send on POST/GET -->
+						<span class="input-group-btn">
+							<!-- image-preview-clear button -->
+							<button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Очистить </button>
+							<!-- image-preview-input -->
+							<div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> 	<span class="image-preview-input-title">Выбрать файл</span>
+								<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+							<!-- rename it -->
+							</div>
+							<button type="button" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Загрузить</button>
+						</span>
+					</div>
+					<!-- /input-group image-preview [TO HERE]-->
+				
+					<br />
+					
+					<!-- Drop Zone -->
+					<div class="upload-drop-zone" id="drop-zone"> Перетащите документ </div>
+					<br />
+					<!-- Progress Bar -->
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Завершено</span> </div>
+					</div>
+					<br />
+					<!-- Upload Finished -->
+					<div class="js-upload-finished">
+						<h4>История загрузок</h4>
+						<div class="list-group">
+							<!--<a href="#" class="list-group-item list-group-item-danger">
+												<span class="badge alert-danger pull-right">23-11-2014</span>amended-catalogue-01.xls
+							</a>
+							<a href="#" class="list-group-item list-group-item-success">
+												<span class="badge alert-success pull-right">23-11-2014</span>amended-catalogue-01.xls
+							</a>
+							<a href="#" class="list-group-item list-group-item-success">
+												<span class="badge alert-success pull-right">23-11-2014</span>amended-catalogue-01.xls
+							</a>-->
+							<a href="#" class="list-group-item list-group-item-success">
+								<span class="badge alert-success pull-right">02-11-2015</span>myDoc.docx
+							</a>
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-md-offset-1 col-xs-12 well container">
+					<h4>Параметры проверки: </h4>
+					<br>
+					<h5>Шрифт </h5>
+					<select ng-model='discussionsSelect' class='form-control'>
+			            <option value='tnr'>Times New Roman</option>
+			            <option value='arial'>Arial</option>
+			        </select>
+
+			        <br>
+			        <h5>Кегель (размер шрифта)</h5>
+			        <input type="number" class="form-control" value="14">
+
+			        <br>
+			        <h5>Размер отступа </h5>
+			        <input type="number" class="form-control" value="0">
+
+			        <br>
+			        <h5>Межстрочный интервал </h5>
+			        <input type="number" class="form-control" value="1.5">
+
+			        <br>
+			        <button type="button" class='check-btn btn btn-primary text-center'>Проверить</button>
+
+				</div>
+			</div>
+		</div>
+		<div class="exp container">
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="glyphicon glyphicon-paperclip"></span>
+					<h5>Как использовать</h5>
+					<p>Описание. Nullam scelerisque, lorem in vulputate euismod, ipsum lectus posuere orci, nec egestas lacus sapien quis dolor. Etiam diam magna, luctus eget convallis ac, pretium vel leo. </p>
+				</div>
+				<div class="col-md-4">
+					<span class="glyphicon glyphicon-lock"></span>
+					<h5>Безопасность</h5>
+					<p>Vestibulum at tellus sem. Sed imperdiet, mauris in porta consequat, odio metus viverra dui, a placerat neque nulla eget diam. Nam nec sodales enim, ac bibendum diam.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="glyphicon glyphicon-stats"></span>
+					<h5>Статистика</h5>
+					<p>Mauris sagittis libero arcu, nec luctus ex imperdiet ut. Phasellus et malesuada massa. Phasellus consequat non ligula sit amet consectetur. Mauris in mi luctus, ultrices nisl ut, lobortis sapien.</p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
