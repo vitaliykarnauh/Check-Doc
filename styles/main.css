@@ -51,6 +51,22 @@ h3 {
   display:         flex;
 }
 
+.error-container {
+  color: #C72C1C;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+
+.text-container {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 40px;
+  font-family: 'Times New Roman';
+}
+
+/*.text-container:not(:last-child) {
+}*/
+
 /*table layout - last column*/
 table tr td:last-child {
     white-space: nowrap;

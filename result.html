@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CheckDoc</title>
+		<meta charset='utf-8'><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<link rel="stylesheet" href="styles/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<script src="scripts/jquery-2.1.4.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<header class='navbar navbar-default navbar-fixed-top'>
+			<div class="container header-container">
+				<a href="index.html" class='navbar-brand'><span class='mt'>CheckDoc</span></a>
+				<ul class="nav navbar-nav navbar-right">
+					<li class='dropdown pull-right'>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='login-span'>Вход</span> <span class="caret"></span></a>
+						<form action="" method="get" class="dropdown-menu collapse dropdown-collapse signin-form" aria-labelledby="dropdownMenu1">
+							<div class="login-box well">
+								<legend>Авторизация</legend>
+								<div class="form-group">
+									<label for="username-email">E-mail</label>
+									<input value='' id="username-email" placeholder="Введите e-mail" type="email" class="form-control" required />
+								</div>
+								<div class="form-group">
+									<label for="password">Пароль</label>
+									<input id="password" value='' placeholder="Введите пароль" type="password" class="form-control" required />
+								</div>
+								<div class="input-group">
+									<div class="checkbox">
+										<label>
+											<input id="login-remember" type="checkbox" name="remember" value="1"> Запомнить меня
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" class="btn btn-primary btn-login-submit btn-block m-t-md" value="Войти" />
+								</div>
+								<span class='text-center'><a href="/resetting/request" class="text-sm">Забыли пароль?</a></span>
+								<li class="divider"></li>
+								<div class="form-group">
+									<br>
+									<a href="register.html" class="btn btn-default btn-block m-t-md">Создать аккаунт</a>
+								</div>
+								
+							</div>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="greeting container">
+			<h1>Соответствие ГОСТам</h1>
+			<h3>Результаты проверки документа на ошибки</h3>
+			<br><br>
+		</div>
+		<div class="result-container container">
+			<div class="error-container">
+				<p>Неверные отступы</p>
+			</div>
+			<div class="text-container text-area readonly container">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt nisi eu magna tristique tristique. Vestibulum pretium consectetur nunc in luctus. Ut nec nulla purus. Nam justo lorem, feugiat sed nisi quis, aliquet fringilla velit. Mauris tincidunt laoreet ligula vitae venenatis. Nam dolor dolor, facilisis non tempor at, iaculis et purus. Etiam sit amet lobortis enim. Quisque venenatis bibendum libero ac malesuada.
+			</div>
+
+			<div class="error-container">
+				<p>Кегель не по ГОСТу</p>
+			</div>
+			<div class="text-container text-area readonly container" style="font-size: 2em">
+				Donec imperdiet cursus neque, at consequat felis imperdiet ac. Sed volutpat tortor nec lacus hendrerit, et ultricies dolor sagittis. Donec scelerisque, nisl sed imperdiet rhoncus, mauris purus tempor tellus, sed tincidunt neque lacus at turpis. Cras luctus diam ac felis tincidunt pellentesque. Proin in erat sed odio condimentum auctor et quis lorem. Donec viverra vitae dolor vitae dictum. Nunc et velit lobortis, elementum leo ut, ornare justo. Sed consectetur, turpis ut viverra placerat, erat odio pretium odio, non fermentum nisi leo sed est.
+			</div>
+
+			<div class="error-container">
+				<p>Межстрочные интервалы не полуторные</p>
+			</div>
+			<div class="text-container text-area readonly container" style="line-height: 3em">
+				Morbi non libero et metus sollicitudin tempus. Nam a lorem bibendum, vehicula sapien vel, viverra lectus. Nullam malesuada urna vitae sodales pharetra. Curabitur id nulla enim. Sed vestibulum ligula arcu. Aenean in maximus enim. Pellentesque sed quam nibh. Mauris consequat nisl ligula, sit amet interdum felis imperdiet et.
+			</div>
+
+			<div class="error-container">
+				<p>Шрифт не тот</p>
+			</div>
+			<div class="text-container text-area readonly container" style="font-family: Arial">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt nisi eu magna tristique tristique. Vestibulum pretium consectetur nunc in luctus. Ut nec nulla purus. Nam justo lorem, feugiat sed nisi quis, aliquet fringilla velit. Mauris tincidunt laoreet ligula vitae venenatis. Nam dolor dolor, facilisis non tempor at, iaculis et purus. Etiam sit amet lobortis enim. Quisque venenatis bibendum libero ac malesuada.
+			</div>
+		</div>
+</body>
+</html>

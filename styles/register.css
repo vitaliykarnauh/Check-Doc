@@ -17,6 +17,10 @@ body {
     padding: 18px;
 }
 
+.login-span {
+    font-size: 18px;
+}
+
 .colorgraph {
   height: 5px;
   border-top: 0;
