@@ -7,9 +7,10 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		<script src="scripts/jquery-2.1.4.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+		<script src="scripts/script.js"></script>
 	</head>
 	<body>
-		<header class='navbar navbar-default navbar-fixed-top'>
+		<!-- <header class='navbar navbar-default navbar-fixed-top'>
 			<div class="container header-container">
 				<a href="index.html" class='navbar-brand'><span class='mt'>CheckDoc</span></a>
 				<ul class="nav navbar-nav navbar-right">
@@ -48,7 +49,8 @@
 					</li>
 				</ul>
 			</div>
-		</header>
+		</header> -->
+		<div id="header"></div>
 		<div class="greeting container">
 			<h1>Соответствие ГОСТам</h1>
 			<h3>Проверка документа на ошибки, ГОСТы или указанные параметры</h3>
@@ -61,14 +63,14 @@
 					<div class="panel-heading"><strong>Загрузка файла</strong> <small> </small></div>
 					<div class="panel-body">
 					<div class="input-group image-preview">
-						<input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+						<input placeholder="" type="text" class="form-control image-preview-filename file-upload-name" disabled="disabled">
 						<!-- don't give a name === doesn't send on POST/GET -->
 						<span class="input-group-btn">
 							<!-- image-preview-clear button -->
 							<button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Очистить </button>
 							<!-- image-preview-input -->
 							<div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> 	<span class="image-preview-input-title">Выбрать файл</span>
-								<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+								<input type="file" id="file-upload" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
 							<!-- rename it -->
 							</div>
 							<button type="button" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Загрузить</button>
