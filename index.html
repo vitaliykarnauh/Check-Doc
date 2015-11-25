@@ -2,15 +2,19 @@
 <html>
 	<head>
 		<title>CheckDoc</title>
-		<meta charset='utf-8'><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<meta charset='utf-8'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 		<script src="scripts/jquery-2.1.4.js"></script>
+		<script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+		<script src="scripts/dropzone.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 		<script src="scripts/script.js"></script>
 	</head>
 	<body>
-		<!-- <header class='navbar navbar-default navbar-fixed-top'>
+		<header class='navbar navbar-default navbar-fixed-top'>
 			<div class="container header-container">
 				<a href="index.html" class='navbar-brand'><span class='mt'>CheckDoc</span></a>
 				<ul class="nav navbar-nav navbar-right">
@@ -49,7 +53,7 @@
 					</li>
 				</ul>
 			</div>
-		</header> -->
+		</header>
 		<div id="header"></div>
 		<div class="greeting container">
 			<h1>Соответствие ГОСТам</h1>
@@ -57,6 +61,13 @@
 			<br><br>
 		</div>
 		<div class="upload-area container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="error-div">
+					Допустимое разрешение документа .docx
+				</div>
+			</div>
+		</div>
 			<div class="row">
 				<div class="col-md-8 col-xs-12">
 					<div class="panel panel-default">
@@ -73,7 +84,7 @@
 								<input type="file" id="file-upload" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
 							<!-- rename it -->
 							</div>
-							<button type="button" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Загрузить</button>
+							<button type="button" id="upload-btn" class="btn btn-labeled btn-default" disabled> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Загрузить</button>
 						</span>
 					</div>
 					<!-- /input-group image-preview [TO HERE]-->
@@ -81,31 +92,10 @@
 					<br />
 					
 					<!-- Drop Zone -->
-					<div class="upload-drop-zone" id="drop-zone"> Перетащите документ </div>
-					<br />
-					<!-- Progress Bar -->
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Завершено</span> </div>
-					</div>
-					<br />
-					<!-- Upload Finished -->
-					<div class="js-upload-finished">
-						<h4>История загрузок</h4>
-						<div class="list-group">
-							<!--<a href="#" class="list-group-item list-group-item-danger">
-												<span class="badge alert-danger pull-right">23-11-2014</span>amended-catalogue-01.xls
-							</a>
-							<a href="#" class="list-group-item list-group-item-success">
-												<span class="badge alert-success pull-right">23-11-2014</span>amended-catalogue-01.xls
-							</a>
-							<a href="#" class="list-group-item list-group-item-success">
-												<span class="badge alert-success pull-right">23-11-2014</span>amended-catalogue-01.xls
-							</a>-->
-							<a href="#" class="list-group-item list-group-item-success">
-								<span class="badge alert-success pull-right">02-11-2015</span>myDoc.docx
-							</a>
-						</div>
-					</div>
+					<form action="/file-upload"
+					    class="dropzone "
+					    id="filesdropzone">
+					</form>
 					</div>
 					</div>
 				</div>
