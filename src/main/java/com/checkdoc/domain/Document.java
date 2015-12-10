@@ -68,6 +68,10 @@ public class Document {
         return date;
     }
 
+    public String getName() {
+        return url.substring(url.lastIndexOf(System.getProperty("file.separator")) + 1, url.length());
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }

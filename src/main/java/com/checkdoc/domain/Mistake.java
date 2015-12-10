@@ -91,7 +91,7 @@ public class Mistake {
 
 		Mistake mistake = (Mistake) o;
 
-		if (!getId().equals(mistake.getId())) return false;
+//		if (!getId().equals(mistake.getId())) return false;
 		if (!getText().equals(mistake.getText())) return false;
 		if (getRow() != null ? !getRow().equals(mistake.getRow()) : mistake.getRow() != null) return false;
 		if (!getDocument().equals(mistake.getDocument())) return false;
