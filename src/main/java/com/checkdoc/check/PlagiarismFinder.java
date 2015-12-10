@@ -127,11 +127,14 @@ public class PlagiarismFinder {
 				}
 				if (paragraphText.equals(paragraphToCheck.getParagraphText())) {
 					MistakeType type = typeFactory.getMistakeType(MistakeTypeEnum.PLAGIARISM);
+					if(paragraphText.length() > 100){
+						paragraphText = paragraphText.substring(0, 100);
+					}
 					Mistake mistake = new Mistake(paragraphText, row, document, type);
-					if(!duplicates.contains(mistake)) {
+					//if(!duplicates.contains(mistake)) {
 						mistakeService.add(mistake);
 						duplicates.add(mistake);
-					}
+					//}
 				}
 			}
 			fis.close();
