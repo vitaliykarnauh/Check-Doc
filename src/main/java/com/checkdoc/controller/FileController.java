@@ -4,6 +4,7 @@ import com.checkdoc.check.PlagiarismFinder;
 import com.checkdoc.check.Rule;
 import com.checkdoc.domain.Document;
 import com.checkdoc.domain.Mistake;
+import com.checkdoc.domain.User;
 import com.checkdoc.service.*;
 import com.checkdoc.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,14 +41,11 @@ public class FileController {
     }
 
     @RequestMapping(value = "/file-upload", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam(value = "file[]", required = false) Object file1, Model model) {
-        if (file1 != null) {
-            System.out.println("file1 ==> " + file1.getClass());
-        }
+    public String uploadFile(@RequestParam(value = "file", required = false) MultipartFile file, Model model) {
         String message = "";
         if (file != null && !file.isEmpty()) {
             try {
-                Document document = FileUtil.process(file, directoryService, userService);
+                Document document = FileUtil.process((User) session().getAttribute("user"), file, directoryService, userService);
                 Document dbDocument = documentService.findDocumentByUrl(document.getUrl());
                 if (dbDocument == null) {
                     System.out.println("New document is added to db.");
@@ -66,6 +64,14 @@ public class FileController {
                     docs.addAll((List<Document>) lastDocs);
                 }
                 session().setAttribute("docs", docs);
+//                Object lastDocs = model.asMap().get("docs");
+//                List<Document> docs = new ArrayList<>();
+//                docs.add(document);
+//                if (lastDocs != null) {
+//                    docs.addAll((List<Document>) lastDocs);
+//                }
+//                model.addAttribute("docs", docs);
+//                System.out.println("documents ==> " + model.asMap().get("docs"));
 
                 System.out.println("You successfully uploaded " + file.getOriginalFilename() + "!");
                 model.addAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
@@ -81,7 +87,10 @@ public class FileController {
         }
         return "index";
     }
-
+    @RequestMapping(value = "/process", method = RequestMethod.GET)
+    public String processView(){
+        return "result";
+    }
     @RequestMapping(value = "/process", method = RequestMethod.POST)
     public String processFile(@RequestParam("font") String font,
                               @RequestParam("fontSize") String fontSizeStr,
@@ -113,20 +122,27 @@ public class FileController {
         List<Mistake> mistakes = FileUtil.findMistakes(document, rule, mistakeService, mistakeTypeService);
 
         System.out.println("Mistakes found ==> " + mistakes);
-        model.addAttribute("mistakes", mistakes);
+        //model.addAttribute("mistakes", mistakes);
+        session().setAttribute("mistakes", mistakes);
 
         return "result";
     }
 
+    @RequestMapping(value = "/pragiarism", method = RequestMethod.GET)
+    public String piracyView(){
+        return "piracyresult";
+    }
+
     @RequestMapping(value = "/pragiarism", method = RequestMethod.POST)
     public String checkPragiarism(Model model) {
-        List<Document> documents = (List<Document>)session().getAttribute("docs");
+        List<Document> documents = (List<Document>) session().getAttribute("docs");
         System.out.println("checking documents ==> " + documents);
 
         PlagiarismFinder finder = new PlagiarismFinder(documents, mistakeService, mistakeTypeService);
         List<Mistake> mistakes = finder.check();
         System.out.println("Mistakes found #plagiarism ==> " + mistakes);
-        model.addAttribute("mistakes", mistakes);
+       // model.addAttribute("mistakes", mistakes);
+        session().setAttribute("mistakes", mistakes);
 
         session().setAttribute("docs", null);
         return "piracyresult";

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css"/>
     <script src="js/jquery-2.1.4.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
 <div id="header"></div>
@@ -31,18 +32,18 @@
     <!--</span>-->
     <!--</span>-->
     <!--</div>-->
-        <span th:if="${#lists.isEmpty(mistakes)}">All good!</span>
-        <span th:if="!${#lists.isEmpty(mistakes)}">
+        <span th:if="${#lists.isEmpty(session.mistakes)}" th:text="#{label.all_good}"></span>
+        <span th:if="!${#lists.isEmpty(session.mistakes)}">
 
     <div class="error-container">
         <p th:text="#{label.mistake_font_size}"/>
     </div>
     <div class="text-container text-area readonly container" style="font-size: 2em">
-                    <span th:each="mistake: ${mistakes}">
+                    <span th:each="mistake: ${session.mistakes}">
                         <span th:switch="${mistake.mistakeType.name}">
                                 <span th:case="FONT_SIZE_MISTAKE">
-                                    <p> Text ==> <span th:text="${mistake.text}"/></p>
-                                    <p> Mistake ==> <span th:text="${mistake.mistakeType.definition}"/>
+                                    <p> <span th:text="#{label.text}"/> ==> <span th:text="${mistake.text}"/></p>
+                                    <p> <span th:text="#{label.mistake}"/> ==> <span th:text="${mistake.mistakeType.definition}"/>
                                     </p>
                                     <hr/>
                                 </span>
@@ -59,11 +60,11 @@
         <p th:text="#{label.mistake_font}"/>
     </div>
     <div class="text-container text-area readonly container" style="font-family: Arial">
-				<span th:each="mistake: ${mistakes}">
+				<span th:each="mistake: ${session.mistakes}">
 					<span th:switch="${mistake.mistakeType.name}">
 						<span th:case="FONT_MISTAKE">
-							<p> Text ==> <span th:text="${mistake.text}"/></p>
-							<p> Mistake ==> <span th:text="${mistake.mistakeType.definition}"/></p>
+							<p> <span th:text="#{label.text}"/> ==> <span th:text="${mistake.text}"/></p>
+							<p> <span th:text="#{label.mistake}"/> ==> <span th:text="${mistake.mistakeType.definition}"/></p>
 							<hr/>
 						</span>
 					</span>

@@ -27,9 +27,9 @@ public final class FileUtil {
 
     public static final String PATH_DOCUMENTS = "temp/documents/";
 
-    public static Document process(MultipartFile mFile, DirectoryService directoryService, UserService userService) {
+    public static Document process(User user, MultipartFile mFile, DirectoryService directoryService, UserService userService) {
         // current user mock
-        User user = userService.findUserById(1L);
+        user = (user == null) ? userService.findUserById(1L) : user;
         if (user == null) {
             throw new IllegalArgumentException("User with id 1 was not found. Create a user before uploading a file.");
         }

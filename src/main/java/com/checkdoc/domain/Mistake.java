@@ -15,6 +15,7 @@ public class Mistake {
 	@Column(name = "MISTAKE_ID", unique = true, nullable = false)
 	private Long id;
 
+	@Lob
 	@Column(name = "TEXT")
 	private String text;
 

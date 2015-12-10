@@ -17,21 +17,22 @@
     <h1 th:text="#{label.piracy}"/>
 
     <h3 th:text="#{label.results}"/>
-    <br/><br/>
+    <br/>
+
+    <span th:if="${#lists.isEmpty(session.mistakes)}" th:text="#{label.all_good}"/><br/>
 </div>
 
-<span th:if="${#lists.isEmpty(mistakes)}">All good!</span>
-        <span th:if="!${#lists.isEmpty(mistakes)}">
+<div class="row">
 
-		<div class="row">
-            <div class="result-container container col-md-4 col-md-offset-4	">
+    <div class="result-container container col-md-4 col-md-offset-4	">
+        <span th:if="!${#lists.isEmpty(session.mistakes)}">
                 <table id="piracy-res">
                     <tr>
                         <th th:text="#{label.paragraph_num}"/>
                         <th th:text="#{label.text}"/>
                         <th th:text="#{label.document_name}"/>
                     </tr>
-                    <span th:each="mistake: ${mistakes}">
+                    <span th:each="mistake: ${session.mistakes}">
                         <tr>
                             <td th:text="${mistake.row}"/>
                             <td th:text="${mistake.text}"/>
@@ -39,8 +40,8 @@
                         </tr>
                     </span>
                 </table>
-            </div>
-        </div>
-			</span>
+    </span>
+    </div>
+</div>
 </body>
 </html>
