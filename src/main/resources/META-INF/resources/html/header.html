@@ -1,45 +1,54 @@
-	<header class='navbar navbar-default navbar-fixed-top'>
-		<div class="container header-container">
-			<a class='navbar-brand'><span class='mt'>CheckDoc</span></a>
-			<div>
-				<a href="?lang=en_EN">English</a>
-				<a href="?lang=ru_RU">Русский</a>
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li class='dropdown pull-right'>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1"><span class='login-span'>Вход</span> <span class="caret"></span></a>
-					<div role="menu" class="dropdown-menu collapse dropdown-collapse well"  aria-labelledby="dropdownMenu1">
-						<form action="" method="get" class="signin-form">
-						<div class="login-box">
-							<legend>Авторизация</legend>
-							<div class="form-group">
-								<label for="username-email">E-mail</label>
-								<input value='' id="username-email" placeholder="Введите e-mail" type="email" class="form-control" required="true" />
-							</div>
-							<div class="form-group">
-								<label for="password">Пароль</label>
-								<input id="password" value='' placeholder="Введите пароль" type="password" class="form-control" required="true  " />
-							</div>
-							<div class="input-group">
-								<div class="checkbox">
-									<input id="login-remember" type="checkbox" name="remember" value="1" />
-									<label for="login-remember"> Запомнить меня</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<input type="submit" class="btn btn-primary btn-login-submit btn-block" value="Войти" />
-							</div>
-							<span class='text-center'><a href="/resetting/request" class="text-sm">Забыли пароль?</a></span>
-							<div class="form-group">
-								<br/>
-							</div>
-						</div>
-					</form>
-						<form method="get" action="/register">
-							<input type="submit" value="Создать аккаунт" class="btn btn-default btn-block" />
-						</form>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</header>
+<header class='navbar navbar-default navbar-fixed-top'>
+    <div class="container header-container">
+        <a class='navbar-brand'><span class='mt'>CheckDoc</span></a>
+        <ul class="nav navbar-nav navbar-right">
+            <li class='dropdown pull-right'>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='login-span'>Вход</span> <span
+                        class="caret"></span></a>
+
+                <div class="dropdown-menu collapse dropdown-collapse signin-form"
+                     aria-labelledby="dropdownMenu1">
+                    <form action="/login" method="get">
+                        <div class="login-box well">
+                            <legend>Авторизация</legend>
+                            <div class="form-group">
+                                <label for="email">E-mailll</label>
+                                <input id="email" name="email" placeholder="Введите e-mail" type="email"
+                                       class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Пароль</label>
+                                <input id="password" name="password" placeholder="Введите пароль" type="password"
+                                       class="form-control" required/>
+                            </div>
+                            <!--<div class="input-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="login-remember" type="checkbox" name="remember" value="1"> Запомнить меня
+                                    </label>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-login-submit btn-block m-t-md"
+                                       value="Войти"/>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <form action="/forgetPassword" method="get">
+                            <input type="submit" class="btn btn-default btn-block m-t-md"
+                                   value="Забыли
+                                пароль?"/>
+                        </form>
+                    </div>
+                    <div class="form-group">
+                        <form action="/register" method="get">
+                            <input type="submit" class="btn btn-default btn-block m-t-md"
+                                   value="Создать аккаунт"/>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>

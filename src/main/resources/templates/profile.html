@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
 <head>
         <title>CheckDoc</title>
         <meta charset='utf-8'/>
@@ -31,20 +31,24 @@
 		<br/><br/>
 	</div>
 	<div class="row container">
-		<div class="col-md-6 col-md-offset-3">
-			<img src="../META-INF/resources/images/inbox-upload.png" alt="user avatar" class="avatar">
-			<input type="file" value="Выбрать файл">
+		<div class="col-md-2 col-md-offset-3">
+			<!--<img src="../META-INF/resources/images/inbox-upload.png" alt="user avatar" class="avatar"/>
+			<input type="file" value="Выбрать файл"/>-->
 		</div>
 		<div class="col-md-3 well">
 			<form action="" method="post">
+				<img src="../META-INF/resources/images/inbox-upload.png" alt="user avatar" class="avatar"/>
+				<br/>
 				<label for="name">Имя </label>
-				<input type="text" class="form-control" />
+				<h3><div th:text="${session.currentUser.userName}"/></h3>
+				<!--<input type="text" class="form-control" />-->
 				<label for="email">E-mail</label>
-				<input type="email" class="form-control" />
+				<h3><div th:text="${session.currentUser.email}"/></h3>
+				<!--<input type="email" class="form-control" />
 				<label for="password">Пароль</label>
 				<input type="password" class="form-control" />
 				<input type="password" class="form-control" />
-				<input type="submit" class="btn btn-primary" value="Изменить" />
+				<input type="submit" class="btn btn-primary" value="Изменить" />-->
 			</form>
 		</div>
 	</div>

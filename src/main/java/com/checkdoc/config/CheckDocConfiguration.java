@@ -11,5 +11,4 @@ public class CheckDocConfiguration  {
         SpringApplication.run(CheckDocConfiguration.class, args);
     }
 
-
 }

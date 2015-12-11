@@ -50,6 +50,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findUserByEmail(String email) {
+        return userDao.findByEmail(email);
+    }
+
+    @Override
     public User register(String userName, String email, String password, String passwordConfirmation) {
         if (!password.equals(passwordConfirmation)) {
             throw new IncorrectPasswordException("incorrectPassword");
@@ -67,8 +72,10 @@ public class UserServiceImpl implements UserService {
     public User login(String email, String password) {
         User user = userDao.findByEmail(email);
         if (user == null || !user.getPassword().equals(password)) {
+            System.out.println("Password incorrect of user doesnt exist");
             return null;
         }
+        System.out.println("Logged");
         return user;
     }
 }
